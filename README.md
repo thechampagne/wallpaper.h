@@ -7,6 +7,15 @@ A **C/C++** library to get and set desktop background.
 ### API
 
 ```c
+typedef enum {
+	WALLPAPER_FILL,
+	WALLPAPER_FIT,
+	WALLPAPER_STRETCH,
+	WALLPAPER_TILE,
+	WALLPAPER_CENTER,
+	WALLPAPER_SPAN
+} wallpaper_mode;
+
 int wallpaper_get(char* file_path);
 
 int wallpaper_set(const char* file_path);
