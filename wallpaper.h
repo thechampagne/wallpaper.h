@@ -41,12 +41,74 @@ typedef enum {
 	WALLPAPER_SPAN = 22     // 22
 } wallpaper_mode;
 
+/*
+* Get desktop background path.
+* 
+* Example:
+* * *
+* int main()
+* {
+*     char* file_path[260];
+*     wallpaper_get(file_path);
+*     printf("%s\n", file_path);
+*     return 0;
+* }
+* * *
+*
+* @param file_path
+* @return 0 on success and non zero value on failure
+*/
 int wallpaper_get(char* file_path);
 
+/*
+* Set desktop background from file.
+* 
+* Example:
+* * *
+* int main()
+* {
+*     wallpaper_set("path\to\background");
+*     return 0;
+* }
+* * *
+*
+* @param file_path
+* @return 0 on success and non zero value on failure
+*/
 int wallpaper_set(const char* file_path);
 
+/*
+* Set desktop background mode e.g. fit.
+* 
+* Example:
+* * *
+* int main()
+* {
+*     wallpaper_set_mode(WALLPAPER_FIT);
+*     return 0;
+* }
+* * *
+*
+* @param mode wallpaper_mode
+* @return 0 on success and non zero value on failure
+*/
 int wallpaper_set_mode(wallpaper_mode mode);
 
+/*
+* Set desktop background from url.
+* 
+* Example:
+* * *
+* int main()
+* {
+*     wallpaper_set_from_url("https://path/to/background");
+*     return 0;
+* }
+* * *
+*
+* @param url
+* @return 0 on success and non zero value on failure
+*/
 int wallpaper_set_from_url(const char* url);
 
 #ifdef __cplusplus
@@ -81,6 +143,8 @@ int wallpaper_set(const char* file_path)
 	return 0;
 }
 
+// @return desktop background path from Temp folder downloaded
+// using download_file function.
 char* wallpaper_path()
 {
 	char username[UNLEN + 1];
@@ -94,6 +158,7 @@ char* wallpaper_path()
 	return path;
 }
 
+// download from url and save it to a file in Temp folder.
 int download_file(const char* url)
 {
 	char* path = wallpaper_path();
